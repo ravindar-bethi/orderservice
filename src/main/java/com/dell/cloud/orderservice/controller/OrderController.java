@@ -28,7 +28,7 @@ public class OrderController {
 	}
 
 	@GetMapping("/{orderId}")
-	public Order getOrder(@PathVariable String orderID) {
+	public Order getOrder(@PathVariable Long orderID) {
 		return orderService.getOrderById(orderID);
 	}
 
@@ -38,7 +38,7 @@ public class OrderController {
 	}
 
 	@PutMapping("/{orderId}/cancel")
-	public Order cancelOrder(@PathVariable String orderId) {
+	public Order cancelOrder(@PathVariable Long orderId) {
 		return orderService.cancelOrder(orderId);
 	}
 

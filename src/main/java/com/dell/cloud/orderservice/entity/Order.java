@@ -1,22 +1,37 @@
 package com.dell.cloud.orderservice.entity;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "orders")
+
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="orders")
 public class Order {
 	@Id
-	private String orderId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long orderId;
+	@Column(name="userId")
 	private String userId;
+	@Column(name="productId")
 	private String productId;
+	@Column(name="quantity")
 	private int quantity;
+	@Column(name="status")
 	private String status;// "PLACED", "CANCELLEd"
 
-	public String getOrderId() {
+	
+
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 

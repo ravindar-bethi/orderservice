@@ -21,7 +21,7 @@ public class OrderService {
 		return orderRepository.save(order);
 	}
 
-	public Order getOrderById(String orderId) {
+	public Order getOrderById(Long orderId) {
 		return orderRepository.findById(orderId).orElse(null);
 	}
 
@@ -29,7 +29,7 @@ public class OrderService {
 		return orderRepository.findByUserId(userId);
 	}
 
-	public Order cancelOrder(String orderId) {
+	public Order cancelOrder(Long orderId) {
 		Order order = orderRepository.findById(orderId).orElse(null);
 		if (order != null) {
 			order.setStatus("CANCELLED");
