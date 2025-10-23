@@ -8,9 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.dell.cloud.orderservice.entity.Order;
 
+@Repository
+public interface OrderRepository extends JpaRepository<Order, Long> {
+	List<Order> findByUserId(Long userId);
 
-  @Repository public interface OrderRepository extends JpaRepository<Order,
-  Long> { List<Order> findByUserId(String userId);
-  
-  }
- 
+}

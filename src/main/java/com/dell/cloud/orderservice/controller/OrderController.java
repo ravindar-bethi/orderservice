@@ -22,19 +22,20 @@ public class OrderController {
 		this.orderService = orderService;
 	}
 
-	@PostMapping
+	@PostMapping("/save")
 	public Order placeOrder(@RequestBody Order order) {
 		return orderService.placeOrder(order);
 	}
 
 	@GetMapping("/{orderId}")
-	public Order getOrder(@PathVariable Long orderID) {
-		return orderService.getOrderById(orderID);
+	public Order getOrder(@PathVariable Long orderId) {
+		return orderService.getOrderById(orderId);
 	}
 
 	@GetMapping("/user/{userId}")
-	public List<Order> getUserOrders(@PathVariable String userId) {
-		return orderService.getOrderByuserId(userId);
+	public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+		System.out.println("Order-Controller:"+userId);
+		return orderService.getOrdersByUserId(userId);
 	}
 
 	@PutMapping("/{orderId}/cancel")
