@@ -33,8 +33,12 @@ public class OrderController {
 	}
 
 	@GetMapping("/user/{userId}")
-	public List<Order> getOrdersByUserId(@PathVariable Long userId) {
+	public List<Order> getOrdersByUserId(@PathVariable Long userId) throws InterruptedException {
 		System.out.println("Order-Controller:"+userId);
+		if(Math.random() > 0.5) {
+			throw new RuntimeException("Temporary Failure! Try Again.");
+		}
+		//Thread.sleep(15000);//Simulating 1 15 seconds delay
 		return orderService.getOrdersByUserId(userId);
 	}
 
